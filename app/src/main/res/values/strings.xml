@@ -9,5 +9,23 @@
       or implied. See the License for the specific language governing permissions and limitations under
       the License.
       -->
-    <string name="app_name">AndroidDevChallenge</string>
+    <string name="app_name">Moti</string>
+
+    <string name="preferences_title">Preferences</string>
+    <string name="preferences_location">Update your current location</string>
+    <string name="preferences_mock_locations">Mock locations</string>
+    <string name="preferences_mock_unit">Units</string>
+    <string name="preferences_mock_unit_celcius">C</string>
+    <string name="preferences_mock_unit_fahrenheit">F</string>
+    <string name="preferences_close">Close</string>
+
+
+    <string name="preferences_location_error">Error getting your location, try later</string>
+    <string name="preferences_location_denied">You denied the location request, without your location, you wont be able to sue this app.</string>
+    <string name="preferences_location_denied_permanent">OK OK, i don\'t want your location, but wont show you the weather! Goodbye.</string>
+    <string name="preferences_rational_title">We need your location</string>
+    <string name="preferences_rational_msg">We need your location for the app to get the right weather data</string>
+    <string name="preferences_rational_ok">OK</string>
+
+
 </resources>

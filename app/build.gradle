@@ -1,13 +1,15 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
     compileSdkVersion 30
 
     defaultConfig {
-        applicationId "com.example.androiddevchallenge"
+        applicationId "com.example.androiddevchallenge4"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
@@ -61,6 +63,12 @@ android {
         excludes += "/META-INF/AL2.0"
         excludes += "/META-INF/LGPL2.1"
     }
+
+//    compileOptions {
+//        sourceCompatibility JavaVersion.VERSION_1_8
+//        targetCompatibility JavaVersion.VERSION_1_8
+//    }
+
 }
 
 dependencies {
@@ -74,8 +82,25 @@ dependencies {
     implementation "androidx.compose.ui:ui-tooling:$compose_version"
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.0'
 
-    testImplementation 'junit:junit:4.13.2'
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+    implementation 'com.sagar:dslpermission:2.0.3'
 
+    // Network
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.4.0'
+    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha08"
+    implementation "com.github.skydoves:landscapist-coil:1.1.7"
+    implementation 'net.danlew:android.joda:2.10.9.1'
+    implementation "com.github.tehras:charts:beta-01"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha03"
+
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
 }
