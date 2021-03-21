@@ -1,4 +1,4 @@
-# Put title of your app here
+# Moti
 
 ![Workflow result](https://github.com/eltonkola/moti/workflows/Check/badge.svg)
 
@@ -6,6 +6,8 @@
 This is the week 4 for Android Dev Challenge Finale: Weather app
 
 Moti means weather in Albanian.
+
+https://github.com/{account}/{repo}/workflows/{workflowName}/builds/latest/artifacts/file.zip
 
 
 ## :bulb: Motivation and Context
