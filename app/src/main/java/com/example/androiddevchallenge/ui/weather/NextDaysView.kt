@@ -36,6 +36,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Brush
@@ -50,6 +51,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.androiddevchallenge.WeatherViewModel
 import com.example.androiddevchallenge.data.CurrentWeatherData
+import com.example.androiddevchallenge.utils.DrawerShape
 import com.example.androiddevchallenge.utils.formatToTwoDecimals
 import com.example.androiddevchallenge.utils.toDayName
 import com.example.androiddevchallenge.utils.toTimeAgo
@@ -74,38 +76,53 @@ fun NextDaysView(
     modifier: Modifier = Modifier
 ) {
 
+    val arrowRotation = if (bottomSheetState.progress.from == Expanded) {
+        if (bottomSheetState.progress.fraction == 1.0f) {
+            180f
+        } else {
+            180F - bottomSheetState.progress.fraction * 180F
+        }
+    } else {
+        if (bottomSheetState.progress.fraction == 1.0f) {
+            0F
+        } else {
+            bottomSheetState.progress.fraction * 180F
+        }
+    }
+
+    val topDrawerArch = if (bottomSheetState.progress.from == Expanded) {
+        if (bottomSheetState.progress.fraction == 1.0f) {
+            0F
+        } else {
+            bottomSheetState.progress.fraction * 90F
+        }
+    } else {
+        if (bottomSheetState.progress.fraction == 1.0f) {
+            90f
+        } else {
+            90F - bottomSheetState.progress.fraction * 90F
+        }
+    }
+
     val viewModel: WeatherViewModel = viewModel()
 
     Column(
         modifier = modifier
             .fillMaxWidth()
             .height(600.dp)
+            .clip(DrawerShape(topDrawerArch.dp))
             .background(
                 brush = Brush.verticalGradient(
                     colors = listOf(
-                        Color.LightGray.copy(alpha = 0.2f),
-                        Color.DarkGray.copy(alpha = 0.5f),
+                        Color.Black.copy(alpha = 0.2f),
+                        Color.DarkGray.copy(alpha = 0.8f),
                         Color.Black
                     )
                 ),
                 alpha = 0.8f
             ),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-
-        val arrowRotation = if (bottomSheetState.progress.from == Expanded) {
-            if (bottomSheetState.progress.fraction == 1.0f) {
-                180f
-            } else {
-                180F - bottomSheetState.progress.fraction * 180F
-            }
-        } else {
-            if (bottomSheetState.progress.fraction == 1.0f) {
-                0F
-            } else {
-                bottomSheetState.progress.fraction * 180F
-            }
-        }
 
         Icon(
             painter = painterResource(id = R.drawable.ic_up),
@@ -155,7 +172,6 @@ fun NextDaysView(
             horizontalOffset = 2f,
             animation = tween(2000),
         )
-
 
         Text(
             text = "Next 5 days predictions:",

@@ -64,7 +64,7 @@ fun WeatherScreen(data: CurrentWeatherData, lastUpdate: DateTime, useCelcius: Bo
         sheetPeekHeight = 252.dp,
         sheetShape = RectangleShape,
         sheetBackgroundColor = Color.Transparent,
-        sheetElevation = 0.5.dp,
+        sheetElevation = 0.dp,
         sheetGesturesEnabled = true,
         sheetContentColor = Color.White,
 
