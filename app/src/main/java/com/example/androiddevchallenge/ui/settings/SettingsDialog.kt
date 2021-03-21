@@ -74,7 +74,7 @@ fun SettingsDialog() {
     val openSettings = remember { viewModel.openSettings }
 
     val dialogBackgroundColor: Color by animateColorAsState(
-        targetValue = if (openSettings.value) Color.DarkGray.copy(alpha = 0.5f) else Color.Transparent,
+        targetValue = if (openSettings.value) MaterialTheme.colors.primaryVariant.copy(alpha = 0.5f) else Color.Transparent,
         animationSpec = tween(300, easing = LinearEasing)
     )
 

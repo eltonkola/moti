@@ -86,7 +86,7 @@ fun NextDayWeatherRow(day: WeatherDayData, min: Int, max: Int, useCelcius: Boole
 
             Text(
                 text = "${day.min_temp.formatToTwoDecimals(useCelcius)}°",
-                style = MaterialTheme.typography.h6,
+                style = MaterialTheme.typography.body2,
                 modifier = Modifier.padding(start = 2.dp),
                 color = Color.White
             )
@@ -100,7 +100,7 @@ fun NextDayWeatherRow(day: WeatherDayData, min: Int, max: Int, useCelcius: Boole
 
             Text(
                 text = "${day.max_temp.formatToTwoDecimals(useCelcius)}°",
-                style = MaterialTheme.typography.h6,
+                style = MaterialTheme.typography.body2,
                 modifier = Modifier.padding(start = 2.dp),
                 color = Color.White
             )
@@ -108,7 +108,7 @@ fun NextDayWeatherRow(day: WeatherDayData, min: Int, max: Int, useCelcius: Boole
     }
 }
 
-const val maxWidth = 100
+const val maxWidth = 90
 
 private fun getWidthBar(min: Int, max: Int, myMin: Int, myMax: Int): Int {
     val sa = maxWidth / (max - min)

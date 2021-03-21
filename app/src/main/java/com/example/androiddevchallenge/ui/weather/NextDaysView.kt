@@ -109,13 +109,13 @@ fun NextDaysView(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .height(600.dp)
+            .height(570.dp)
             .clip(DrawerShape(topDrawerArch.dp))
             .background(
                 brush = Brush.verticalGradient(
                     colors = listOf(
-                        Color.Black.copy(alpha = 0.2f),
-                        Color.DarkGray.copy(alpha = 0.8f),
+                        MaterialTheme.colors.primaryVariant.copy(alpha = 0.4f),
+                        MaterialTheme.colors.primary.copy(alpha = 0.8f),
                         Color.Black
                     )
                 ),
@@ -202,7 +202,7 @@ fun NextDaysView(
         }
 
         Row(
-            modifier = Modifier.fillMaxWidth().padding(top = 40.dp, start = 8.dp, end = 8.dp),
+            modifier = Modifier.fillMaxWidth().padding(top = 20.dp, start = 8.dp, end = 8.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
 

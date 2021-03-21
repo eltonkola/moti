@@ -89,7 +89,7 @@ fun WeatherScreen(data: CurrentWeatherData, lastUpdate: DateTime, useCelcius: Bo
                     .background(
                         brush = Brush.verticalGradient(
                             colors = listOf(
-                                MaterialTheme.colors.primary,
+                                MaterialTheme.colors.secondary,
                                 MaterialTheme.colors.primaryVariant
                             )
                         ),
