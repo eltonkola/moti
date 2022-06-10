@@ -103,8 +103,8 @@ class PermissionChecker(private val activity: MainActivity) {
         }
 
         val locationCallback = object : LocationCallback() {
-            override fun onLocationResult(locationResult: LocationResult?) {
-                if (locationResult != null && locationResult.locations.isNotEmpty()) {
+            override fun onLocationResult(locationResult: LocationResult) {
+                if (locationResult.locations.isNotEmpty()) {
                     val newLocation = locationResult.locations[0]
                     onAccepted(LocationResponse(newLocation.latitude, newLocation.longitude))
                 } else {

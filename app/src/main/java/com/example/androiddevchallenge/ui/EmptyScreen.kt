@@ -29,8 +29,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.androiddevchallenge.WeatherViewModel
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge4.R.drawable
-import com.skydoves.landscapist.coil.CoilImage
-
 @ExperimentalAnimationApi
 @Composable
 fun EmptyScreen(modifier: Modifier = Modifier) {
@@ -42,14 +40,16 @@ fun EmptyScreen(modifier: Modifier = Modifier) {
         contentAlignment = Alignment.Center,
     ) {
 
-        CoilImage(
-            modifier = Modifier.fillMaxSize(),
-            imageModel = "",
-            contentScale = ContentScale.Crop,
-            circularRevealedEnabled = true,
-            placeHolder = ImageBitmap.imageResource(drawable.default_img),
-            error = ImageBitmap.imageResource(drawable.default_img)
-        )
+
+
+//        CoilImage(
+//            modifier = Modifier.fillMaxSize(),
+//            imageModel = "",
+//            contentScale = ContentScale.Crop,
+//            circularRevealedEnabled = true,
+//            placeHolder = ImageBitmap.imageResource(drawable.default_img),
+//            error = ImageBitmap.imageResource(drawable.default_img)
+//        )
     }
 }
 

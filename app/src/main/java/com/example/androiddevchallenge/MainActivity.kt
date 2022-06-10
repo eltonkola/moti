@@ -32,8 +32,10 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    @ExperimentalMaterialApi
-    @ExperimentalAnimationApi
+    @OptIn(ExperimentalMaterialApi::class,
+        androidx.compose.animation.ExperimentalAnimationApi::class,
+        kotlin.ExperimentalUnsignedTypes::class
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
 
         WindowCompat.setDecorFitsSystemWindows(window, false)

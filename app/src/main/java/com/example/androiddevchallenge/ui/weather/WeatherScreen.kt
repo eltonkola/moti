@@ -16,6 +16,7 @@
 package com.example.androiddevchallenge.ui.weather
 
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
@@ -40,10 +41,10 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.rememberImagePainter
 import com.example.androiddevchallenge.data.CurrentWeatherData
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge4.R
-import com.skydoves.landscapist.coil.CoilImage
 import org.joda.time.DateTime
 
 @ExperimentalMaterialApi
@@ -74,14 +75,21 @@ fun WeatherScreen(data: CurrentWeatherData, lastUpdate: DateTime, useCelcius: Bo
 
             val currentImageIndex = remember { mutableStateOf(0) }
 
-            CoilImage(
+            Image(
+                painter = rememberImagePainter(data.location.image[currentImageIndex.value]),
+                contentDescription = null,
                 modifier = Modifier.fillMaxSize(),
-                imageModel = data.location.image[currentImageIndex.value],
                 contentScale = ContentScale.Crop,
-                circularRevealedEnabled = true,
-                // placeHolder = ImageBitmap.imageResource(R.drawable.default_img),
-                error = ImageBitmap.imageResource(R.drawable.default_img)
             )
+
+//            CoilImage(
+//
+//                imageModel = ,
+//
+//                circularRevealedEnabled = true,
+//                // placeHolder = ImageBitmap.imageResource(R.drawable.default_img),
+//                error = ImageBitmap.imageResource(R.drawable.default_img)
+//            )
 
             Box(
                 modifier = Modifier

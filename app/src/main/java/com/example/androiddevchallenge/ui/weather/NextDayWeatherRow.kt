@@ -77,9 +77,10 @@ fun NextDayWeatherRow(day: WeatherDayData, min: Int, max: Int, useCelcius: Boole
                 .size(36.dp),
         )
 
+        val aaPad = getpaddingStart(min, max, day.min_temp.toInt(), day.max_temp.toInt())
         Row(
             modifier = Modifier.height(22.dp).weight(1F).padding(
-                start = getpaddingStart(min, max, day.min_temp.toInt(), day.max_temp.toInt()).dp
+                start = (if(aaPad> 0) aaPad else 0).dp
             ),
             verticalAlignment = Alignment.CenterVertically,
         ) {

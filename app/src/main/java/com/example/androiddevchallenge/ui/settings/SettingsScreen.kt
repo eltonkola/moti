@@ -33,6 +33,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.androiddevchallenge.PermissionHelper
 import com.example.androiddevchallenge.WeatherViewModel
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge4.R
@@ -48,6 +49,13 @@ fun SettingsScreen(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .padding(top = 56.dp, start = 16.dp, end = 16.dp)
         ) {
+
+            val locationHelper = PermissionHelper.current
+
+            locationHelper.listenForLocation {
+
+            }
+
             Icon(
                 painter = painterResource(id = R.drawable.ic_menu_icon),
                 contentDescription = "Settings",

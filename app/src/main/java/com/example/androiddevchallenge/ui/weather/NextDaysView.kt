@@ -15,6 +15,7 @@
  */
 package com.example.androiddevchallenge.ui.weather
 
+import android.graphics.Point
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -45,7 +46,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign.Start
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextAlign.Companion
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -56,13 +58,13 @@ import com.example.androiddevchallenge.utils.formatToTwoDecimals
 import com.example.androiddevchallenge.utils.toDayName
 import com.example.androiddevchallenge.utils.toTimeAgo
 import com.example.androiddevchallenge4.R
-import com.github.tehras.charts.line.LineChart
-import com.github.tehras.charts.line.LineChartData
-import com.github.tehras.charts.line.LineChartData.Point
-import com.github.tehras.charts.line.renderer.line.SolidLineDrawer
-import com.github.tehras.charts.line.renderer.point.FilledCircularPointDrawer
-import com.github.tehras.charts.line.renderer.xaxis.SimpleXAxisDrawer
-import com.github.tehras.charts.line.renderer.yaxis.YAxisDrawer
+//import com.github.tehras.charts.line.LineChart
+//import com.github.tehras.charts.line.LineChartData
+//import com.github.tehras.charts.line.LineChartData.Point
+//import com.github.tehras.charts.line.renderer.line.SolidLineDrawer
+//import com.github.tehras.charts.line.renderer.point.FilledCircularPointDrawer
+//import com.github.tehras.charts.line.renderer.xaxis.SimpleXAxisDrawer
+//import com.github.tehras.charts.line.renderer.yaxis.YAxisDrawer
 import org.joda.time.DateTime
 
 @ExperimentalMaterialApi
@@ -133,45 +135,45 @@ fun NextDaysView(
                 .rotate(arrowRotation),
         )
 
-        val emptyY = object : YAxisDrawer {
-            override fun drawAxisLabels(
-                drawScope: DrawScope,
-                canvas: Canvas,
-                drawableArea: Rect,
-                minValue: Float,
-                maxValue: Float
-            ) {
-            }
+//        val emptyY = object : YAxisDrawer {
+//            override fun drawAxisLabels(
+//                drawScope: DrawScope,
+//                canvas: Canvas,
+//                drawableArea: Rect,
+//                minValue: Float,
+//                maxValue: Float
+//            ) {
+//            }
+//
+//            override fun drawAxisLine(
+//                drawScope: DrawScope,
+//                canvas: Canvas,
+//                drawableArea: Rect
+//            ) {
+//            }
+//        }
 
-            override fun drawAxisLine(
-                drawScope: DrawScope,
-                canvas: Canvas,
-                drawableArea: Rect
-            ) {
-            }
-        }
-
-        LineChart(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(180.dp)
-                .padding(end = 6.dp)
-                .offset(x = (-20).dp),
-            lineChartData = LineChartData(
-                data.weather.consolidated_weather.map {
-                    Point(
-                        it.the_temp.formatToTwoDecimals(useCelcius).toFloat(),
-                        it.applicable_date.toDayName()
-                    )
-                }
-            ),
-            pointDrawer = FilledCircularPointDrawer(diameter = 6.dp, color = Color.White),
-            lineDrawer = SolidLineDrawer(thickness = 1.dp, color = Color.White),
-            xAxisDrawer = SimpleXAxisDrawer(10.sp, Color.White, 1, 0.1.dp, Color.White),
-            yAxisDrawer = emptyY,
-            horizontalOffset = 2f,
-            animation = tween(2000),
-        )
+//        LineChart(
+//            modifier = Modifier
+//                .fillMaxWidth()
+//                .height(180.dp)
+//                .padding(end = 6.dp)
+//                .offset(x = (-20).dp),
+//            lineChartData = LineChartData(
+//                data.weather.consolidated_weather.map {
+//                    Point(
+//                        it.the_temp.formatToTwoDecimals(useCelcius).toFloat(),
+//                        it.applicable_date.toDayName()
+//                    )
+//                }
+//            ),
+//            pointDrawer = FilledCircularPointDrawer(diameter = 6.dp, color = Color.White),
+//            lineDrawer = SolidLineDrawer(thickness = 1.dp, color = Color.White),
+//            xAxisDrawer = SimpleXAxisDrawer(10.sp, Color.White, 1, 0.1.dp, Color.White),
+//            yAxisDrawer = emptyY,
+//            horizontalOffset = 2f,
+//            animation = tween(2000),
+//        )
 
         Text(
             text = "Next 5 days predictions:",
@@ -211,7 +213,7 @@ fun NextDaysView(
                 style = MaterialTheme.typography.h5,
                 modifier = Modifier,
                 fontSize = 12.sp,
-                textAlign = Start,
+                textAlign = TextAlign.Start,
                 color = Color.White
             )
 
@@ -225,7 +227,7 @@ fun NextDaysView(
                 style = MaterialTheme.typography.h5,
                 modifier = Modifier.clickable { viewModel.reload() },
                 fontSize = 12.sp,
-                textAlign = Start,
+                textAlign = Companion.Start,
                 color = Color.White
             )
         }
